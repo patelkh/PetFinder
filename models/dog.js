@@ -9,6 +9,8 @@ const DogSchema = new Schema({
     gender: {type: String, required: true},
     size: {type: String},
     entry_date: {type: Date},
+    location: {type: Schema.Types.ObjectId, ref: "Location"},
+    shelter: {type: Schema.Types.ObjectId, ref: "Shelter"}
 });
 
 DogSchema.virtual("url").get(function(){

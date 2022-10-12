@@ -1,8 +1,19 @@
+* {
+  background-color: aliceblue;
+}
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.container {
+  display: flex;
+}
+
 a {
   color: #00B7FF;
+}
+
+li {
+  list-style: none;
 }
