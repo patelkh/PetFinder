@@ -17,8 +17,8 @@ DogSchema.virtual("url").get(function(){
     return `/catalog/pet/${this._id}`
 })
 
-//compile schema to model
-let Dog = mongoose.model('Dog', DogSchema, )
+//compile schema to mode
+let Dog = mongoose.model('Dog', DogSchema)
 
 
 module.exports = mongoose.model("Dog", DogSchema)

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>PetFinder</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include('header'); %>
+    <div class="main-container">
+      <div class="nav-container"><%- include('nav'); %></div>
+      <div class="content-container">
+        <p class="app-info">PetFinder is a full stack application built using <b>M</b>ongoDB, <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.</p>
+        <menu>
+        <div class="main-content">
+          <div class="content">
+            <% dog_list.forEach(dog => { %>
+             <div class="card">
+              <li class="card-content"><b>Name:</b> <%= dog.name %></li>
+              <li class="card-content"><b>Breed:</b> <%= dog.breed %></li>
+              <li class="card-content"><b>Age:</b> <%= dog.age %></li>
+              <li class="card-content"><b>Gender:</b> <%= dog.gender %></li>
+              <li class="card-content"><b>Size:</b> <%= dog.size %></li>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </menu>
+    </div>
+    </div>
+  </body>
+  <footer>
+    <%- include('footer'); -%>
+  </footer>
+</html>
