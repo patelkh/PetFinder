@@ -7,5 +7,6 @@ const shelter_controller = require('../controllers/shelterController');
 
 router.get("/", dog_controller.index);
 router.get("/about", dog_controller.about);
+router.get("/create_dog", dog_controller.create_dog);
 
 module.exports = router

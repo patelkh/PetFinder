@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>PetFinder</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include('header'); %>
+    <div class="main-container">
+      <div class="nav-container"><%- include('nav'); %></div>
+      <div class="content-container">
+        <p class="app-info">PetFinder is a full stack application built using <b>M</b>ongoDB, <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.</p>
+        <hr>
+        <div class="form-container">
+            <h3>Add Pet</h3>
+            <form action="/catalog/update_dog_post" method="post">
+                <div class="form-field">
+                    <label for="name">Name: </label>
+                    <input required type="text", id="pet_name", placeholder="Enter Name">
+                </div>
+                <div class="form-field">
+                    <label min="0" max="20" for="age">Age: </label>
+                    <input type="text", id="pet_age", placeholder="Enter age">
+                </div>
+                <div class="form-field">
+                    <label for="breed">Breed: </label>
+                    <input type="text", id="pet_breed", placeholder="Enter breed">
+                </div>
+                <div class="form-field">
+                    <label for="gender">Gender: </label>
+                    <select name="gender" id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="location">State:</label>
+                    <select name="location" id="location">
+                    <% locations.forEach((location, i) => { %>
+                    <option value="<%- locations[i].state %> "><%- locations[i].state %> </option>
+                    <% }) %>
+                </select>
+                </div>
+                <div class="form-field">
+                    <label for="shelter">Shelter: </label>
+                    <select name="shelter" id="shelter">
+                        <% shelters.forEach((shelter,i) => { %>
+                        <option value="<%- shelters[i].name  %> "><%- shelters[i].name %> </option>
+                        <% }) %>
+                    </select>
+                </div>
+            </form>
+            <div class="form-add">
+                <button type="submit" class="add-button">Add</button>
+            </div>
+        </div>
+
+    </div>
+    </div>
+  </body>
+  <footer>
+    <%- include('footer'); -%>
+  </footer>
+</html>
