@@ -83,7 +83,7 @@ exports.update_dog = (req, res, next) => {
                 return next(err)
             }
             console.log(`entry_date: ${moment(results.dog.entry_date).format('YYYY-MM-DD')}`);
-            res.render("EditForm", {
+            res.render("editForm", {
                 title: "Edit Pet",
                 dog: results.dog,
                 entry_date: moment(results.dog.entry_date).format("YYYY-MM-DD"),
