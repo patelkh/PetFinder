@@ -54,12 +54,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //dev
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 //prod
-app.use(express.static(path.join(__dirname, 'build')))
-.use(cors())
-.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'build')))
+// .use(cors())
+// .use(cookieParser());
 
 
 
