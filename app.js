@@ -14,7 +14,9 @@ const catalogRouter = require('./routes/catalog');
 var app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
-const mongoDB = "mongodb+srv://admin:1234@petfinder.xwxdrcq.mongodb.net/PetFinder?retryWrites=true&w=majority";
+const dev_db_url = "mongodb+srv://admin:1234@petfinder.xwxdrcq.mongodb.net/PetFinder?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
+
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
