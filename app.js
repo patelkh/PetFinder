@@ -16,7 +16,6 @@ var app = express();
 const mongoose = require("mongoose");
 const dev_db_url = "mongodb+srv://admin:1234@petfinder.xwxdrcq.mongodb.net/PetFinder?retryWrites=true&w=majority";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
-
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
@@ -53,6 +52,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 app.use('/', indexRouter);
