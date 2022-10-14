@@ -15,7 +15,7 @@
         <hr>
         <div class="form-container">
             <h3>Edit Form </h3>
-            <form class="edit-form" action="/catalog/edit_dog_post" method="post">
+            <form class="edit-form" action="/catalog/edit_dog_save" method="post">
                 <div class="form-fields">
                     <div class="form-field">
                         <label for="name">Name: </label>
@@ -30,8 +30,33 @@
                         <input type="text", id="pet_breed", name="breed" value="<%- dog.breed %>">
                     </div>
                     <div class="form-field">
+                        <label for="gender">Gender: </label>
+                        <select name="gender" id="gender" name="gender">
+                            <% if (dog.gender == "Male") { %>
+                                <option value="Male" selected>Male</option>
+                            <% } else { %> 
+                                <option value="Female" selected>Female</option>
+                            <%} %> 
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="size">Size: </label>
+                        <select name="size" id="size" name="size">
+                            <% if (dog.size == "Small") { %>
+                                <option value="Small" selected>Small</option>
+                            <% } else if(dog.size == "Medium") { %> 
+                                <option value="Medium" selected>Medium</option>
+                            <%} else { %>
+                                <option value="Large" selected>Large</option>
+                            <%} %> 
+                        </select>
+                    </div>
+                    <div class="form-field">
                         <label for="entry_date">Entry Date: </label>
                         <input required type="date" id="entry_date" name="entry_date" value="<%- entry_date%>">
+                    </div>
+                    <div class="form-field">
+                        <input type="hidden" name="id" value="<%= _id %>">
                     </div>
                 </div>
                 <div class="form-control">

@@ -8,7 +8,7 @@ const DogSchema = new Schema({
     breed: {type: String},
     gender: {type: String, required: true},
     size: {type: String},
-    entry_date: {type: Date},
+    entry_date: {type: Date, required: true},
     location: {type: Schema.Types.ObjectId, ref: "Location"},
     shelter: {type: Schema.Types.ObjectId, ref: "Shelter"}
 });

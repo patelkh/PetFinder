@@ -1,10 +1,10 @@
 * {
-  font-family: Arial;
+
 }
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px sans-serif;
   width: 960px;
   height: auto;
 }
@@ -19,7 +19,7 @@ header {
   line-height: .5rem;
   margin-bottom: 10px;
   background-color: #22a4d8;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
 }
 
@@ -42,11 +42,16 @@ header {
 
 .nav {
   margin-top: 25px;
+}
 
+.nav-items {
+  color: white;
+  font-size: 16px;
 }
 
 a {
   color: whitesmoke;
+  text-decoration: none;
 }
 
 li {
@@ -104,7 +109,7 @@ li {
 .card {
   height: 200px;
   width: 220px;
-  border: 1px dotted gray;
+  border: 1px solid lavender;
   border-radius: 10px;
   margin-right: 15px;
   margin-bottom: 15px;
@@ -118,6 +123,7 @@ li {
   text-align: center;
   align-items: center;
   justify-content: center;
+  box-shadow: 1px 1px 1px 1px lavender;
 }
 
 .card-content {
