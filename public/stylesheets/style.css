@@ -92,6 +92,15 @@ li {
   color: white
 }
 
+.edit-delete-button {
+  border: 1px solid dodgerblue;
+  background-color: white;
+  color: dodgerblue;
+  height: 25px;
+  width: 75px;
+  border-radius: 10px;
+}
+
 .card {
   height: 200px;
   width: 220px;
@@ -99,12 +108,12 @@ li {
   border-radius: 10px;
   margin-right: 15px;
   margin-bottom: 15px;
-  padding-top: 25px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  /* padding-bottom: 15px;  */
   display: grid;
   flex-direction: column;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(5, 25px);
+  grid-template-rows: repeat(2, 1fr);
   overflow: auto;
   text-align: center;
   align-items: center;
@@ -112,9 +121,15 @@ li {
 }
 
 .card-content {
-  /* line-height: 0.5rem; */
-  height: 5px
+  line-height: 0.2rem;
+  margin-top: 15px;
 }
+
+.card-controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 
 .footer {
   margin-top: 10px;
@@ -126,29 +141,38 @@ li {
   justify-content: center;
 }
 
-.form-container {
+/* .form-container {
   display: grid;
   grid-template-columns: repeat(1, 100%);
   grid-template-rows: repeat(3, auto);
+} */
 
-}
 .form-container > h3 {
   text-align: center;
   margin-bottom: 20px;
   text-decoration:underline solid black;
 }
 
-form {
+.add-form {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: repeat(2, auto);
+  align-items: center;
+  justify-content: center; 
+  background: linear-gradient(white, aliceblue);
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 20px;
+  height: 300px;
+
+}
+
+.form-fields {
   display: grid;
   grid-template-columns: repeat(2, 250px);
   grid-template-rows: repeat(3, 60px);
   align-items: center;
   justify-content: center;
-  background: linear-gradient(white, whitesmoke);
-  margin-left: 50px;
-  margin-right: 50px;
-  border-radius: 20px;
-  height: 150%;
 }
 
 label, input, select {
@@ -161,8 +185,9 @@ input, select {
   height:25px
 }
 
-.form-add {
+.form-control {
   margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
   justify-content: center;

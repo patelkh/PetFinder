@@ -131,22 +131,22 @@ function createShelters(callback) {
 function createDogs(callback) {
     async.parallel([
         function(callback) {
-          dogCreate('Milo', 2, 'Border Colie', 'Male', 'Medium', Date.now(), locations[0], shelters[0], callback);
+          dogCreate('Milo', 2, 'Border Colie', 'Male', 'Medium', new Date("<10-14-2022>"), locations[0], shelters[0], callback);
         },
         function(callback) {
-            dogCreate('Luna', 3, 'Boxer', 'Female', 'Medium', Date.now(), locations[1], shelters[1], callback);
+            dogCreate('Luna', 3, 'Boxer', 'Female', 'Medium', new Date("<10-14-2022>"), locations[1], shelters[1], callback);
         },
         function(callback) {
-            dogCreate('Angle', 4, 'German Shepard', 'Female', 'Large', Date.now(), locations[0], shelters[0], callback);
+            dogCreate('Angle', 4, 'German Shepard', 'Female', 'Large', new Date("<10-14-2022>"), locations[0], shelters[0], callback);
         },
         function(callback) {
-            dogCreate('Barbi', 1, 'Yellow Lab', 'Female', 'Small', Date.now(), locations[0], shelters[0], callback);
+            dogCreate('Barbi', 1, 'Yellow Lab', 'Female', 'Small', new Date("<10-14-2022>"), locations[0], shelters[0], callback);
         },
           function(callback) {
-              dogCreate('Coco', 9, 'Mix', 'Male', 'Medium', Date.now(), locations[0], shelters[0], callback);
+              dogCreate('Coco', 9, 'Mix', 'Male', 'Medium', new Date("<10-14-2022>"), locations[0], shelters[0], callback);
         },
           function(callback) {
-              dogCreate('Bruno', 4, 'Doberman', 'Male', 'Large', Date.now(), locations[1], shelters[1], callback);
+              dogCreate('Bruno', 4, 'Doberman', 'Male', 'Large', new Date("<10-14-2022>"), locations[1], shelters[1], callback);
         },], callback);
 }
 

@@ -14,7 +14,7 @@ const DogSchema = new Schema({
 });
 
 DogSchema.virtual("url").get(function(){
-    return `/catalog/pet/${this._id}`
+    return `/catalog`
 })
 
 //compile schema to mode

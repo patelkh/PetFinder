@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>PetFinder</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include('header'); %>
+    <div class="main-container">
+      <div class="nav-container"><%- include('nav'); %></div>
+      <div class="content-container">
+        <p class="app-info">PetFinder is a full stack application built using <b>M</b>ongoDB, <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.</p>
+        <hr>
+        <div class="form-container">
+            <h3>Edit Form </h3>
+            <form class="edit-form" action="/catalog/edit_dog_post" method="post">
+                <div class="form-fields">
+                    <div class="form-field">
+                        <label for="name">Name: </label>
+                        <input required type="text", id="pet_name", name="name" value="<%- dog.name %>">
+                    </div>
+                    <div class="form-field">
+                        <label min="0" max="20" for="age">Age: </label>
+                        <input type="text", id="pet_age", name="age" value="<%- dog.age %>">
+                    </div>
+                    <div class="form-field">
+                        <label for="breed">Breed: </label>
+                        <input type="text", id="pet_breed", name="breed" value="<%- dog.breed %>">
+                    </div>
+                    <div class="form-field">
+                        <label for="entry_date">Entry Date: </label>
+                        <input required type="date" id="entry_date" name="entry_date" value="<%- entry_date%>">
+                    </div>
+                </div>
+                <div class="form-control">
+                    <button type="submit" value="submit" class="add-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+  </body>
+  <footer>
+    <%- include('footer'); -%>
+  </footer>
+</html>

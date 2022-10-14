@@ -15,48 +15,61 @@
         <hr>
         <div class="form-container">
             <h3>Add Pet</h3>
-            <form action="/catalog/update_dog_post" method="post">
-                <div class="form-field">
-                    <label for="name">Name: </label>
-                    <input required type="text", id="pet_name", placeholder="Enter Name">
-                </div>
-                <div class="form-field">
-                    <label min="0" max="20" for="age">Age: </label>
-                    <input type="text", id="pet_age", placeholder="Enter age">
-                </div>
-                <div class="form-field">
-                    <label for="breed">Breed: </label>
-                    <input type="text", id="pet_breed", placeholder="Enter breed">
-                </div>
-                <div class="form-field">
-                    <label for="gender">Gender: </label>
-                    <select name="gender" id="gender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-                <div class="form-field">
-                    <label for="location">State:</label>
-                    <select name="location" id="location">
-                    <% locations.forEach((location, i) => { %>
-                    <option value="<%- locations[i].state %> "><%- locations[i].state %> </option>
-                    <% }) %>
-                </select>
-                </div>
-                <div class="form-field">
-                    <label for="shelter">Shelter: </label>
-                    <select name="shelter" id="shelter">
-                        <% shelters.forEach((shelter,i) => { %>
-                        <option value="<%- shelters[i].name  %> "><%- shelters[i].name %> </option>
+            <form class="add-form" action="/catalog/create_dog" method="post">
+                <div class="form-fields">
+                    <div class="form-field">
+                        <label for="name">Name: </label>
+                        <input required type="text", id="pet_name", name="name", placeholder="Enter Name">
+                    </div>
+                    <div class="form-field">
+                        <label min="0" max="20" for="age">Age: </label>
+                        <input type="text", id="pet_age", name="age", placeholder="Enter age">
+                    </div>
+                    <div class="form-field">
+                        <label for="breed">Breed: </label>
+                        <input type="text", id="pet_breed", name="breed", placeholder="Enter breed">
+                    </div>
+                    <div class="form-field">
+                        <label for="gender">Gender: </label>
+                        <select name="gender" id="gender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="size">Size: </label>
+                        <select name="size" id="size" name="size">
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="location">State:</label>
+                        <select name="location" id="location" name="location">
+                        <% locations.forEach((location, i) => { %>
+                        <option value="<%- locations[i].state %> "><%- locations[i].state %> </option>
                         <% }) %>
                     </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="shelter">Shelter: </label>
+                        <select name="shelter" id="shelter" name="shelter">
+                            <% shelters.forEach((shelter,i) => { %>
+                            <option value="<%- shelters[i].name  %> "><%- shelters[i].name %> </option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="entry_date">Entry Date: </label>
+                        <input required type="date", id="entry_date", name="entry_date">
+                    </div>
+                </div>
+                <div class="form-control">
+                    <button type="submit" value="submit" class="add-button">Add</button>
                 </div>
             </form>
-            <div class="form-add">
-                <button type="submit" class="add-button">Add</button>
-            </div>
         </div>
-
     </div>
     </div>
   </body>
