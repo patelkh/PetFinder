@@ -1,13 +1,16 @@
+
 body {
   font: 14px sans-serif;
 
 }
 
 header {
-  height: 400px;
+  min-width: 800px;
+  height: 350px;
   justify-content: left;
   font-weight: bolder;
   color: dodgerblue;
+  overflow: hidden;
 }
 
 .header-container > img {
@@ -60,7 +63,7 @@ li {
 }
 
 .content-container {
-  border: 2px solid aliceblue;
+  /* border: 2px solid aliceblue; */
   background: linear-gradient(white, aliceblue);
   border-radius: 10px;
   /* min-height: 100vh; */
@@ -76,10 +79,9 @@ li {
 }
 
 .content {
-  display: inline-grid;
-  flex-direction: column;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(1, 1fr);  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-rows: repeat(2, 1fr);  
   overflow: auto;
 }
 
@@ -94,14 +96,7 @@ li {
 .button-container > button > a {
   color: white
 }
-.add-button {
-  width: 200px;
-  height: 35px;
-  border-radius: 10px;
-  border: none;
-  background-color: green;
-  color: white
-}
+
 
 .edit-delete-button {
   /* border: 1px solid dodgerblue; */
@@ -229,3 +224,10 @@ input, select {
   justify-content: center;
 }
 
+
+.search {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
