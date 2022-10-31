@@ -8,16 +8,17 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <%- include('header'); %>
+    <%- include('nav') %> <%- include('header'); %>
     <div class="main-container">
-      <div class="nav-container"><%- include('nav'); %></div>
       <div class="content-container">
-        <p class="app-info">PetFinder is a full stack application built using <b>M</b>ongoDB, <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.</p>
-        <hr>
         <div class="form-container">
             <h3>Add Pet</h3>
-            <form class="add-form" action="/catalog/create_dog" method="post">
+            <form class="add-form" enctype="multipart/form-data" action="/catalog/create_pet" method="post">
                 <div class="form-fields">
+                    <div class="form-field">
+                        <label for="image">Upload Image: </label>
+                        <input type="file" name="image">
+                    </div>
                     <div class="form-field">
                         <label for="name">Name: </label>
                         <input required type="text", id="pet_name", name="name", placeholder="Enter Name">
@@ -25,6 +26,14 @@
                     <div class="form-field">
                         <label min="0" max="20" for="age">Age: </label>
                         <input type="text", id="pet_age", name="age", placeholder="Enter age">
+                    </div>
+                    <div class="form-field">
+                        <label for="type">Type:</label>
+                        <select name="type" id="type" name="type">
+                        <% types.forEach((type, i) => { %>
+                        <option value="<%- types[i].type %> "><%- types[i].type %> </option>
+                        <% }) %>
+                    </select>
                     </div>
                     <div class="form-field">
                         <label for="breed">Breed: </label>

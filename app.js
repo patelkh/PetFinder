@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var cors = require('cors')
 var logger = require('morgan');
 var moment = require('moment')
+const donenv = require('dotenv').config();
 
 
 var indexRouter = require('./routes/index');
@@ -15,8 +16,7 @@ const catalogRouter = require('./routes/catalog');
 var app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
-const dev_db_url = "mongodb+srv://admin:1234@petfinder.xwxdrcq.mongodb.net/PetFinder?retryWrites=true&w=majority";
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+const mongoDB = process.env.dev_db_url || process.env.MONGODB_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;

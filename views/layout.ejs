@@ -1,53 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <title>PetFinder</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="/stylesheets/style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>PetFinder</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <%- include('header'); %>
+    <%- include('nav') %> <%- include('header'); %>
     <div class="main-container">
-      <div class="nav-container"><%- include('nav'); %></div>
       <div class="content-container">
-        <p class="app-info">PetFinder is a full stack application built using <b>M</b>ongoDB, <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.</p>
-        <hr>
+        <p class="app-info">
+          PetFinder is a full stack application built using <b>M</b>ongoDB,
+          <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.
+        </p>
+        <hr />
         <div class="button-container">
-          <button class="add-button"><a href="/catalog/create_dog">Add Lost Pet</a></button>
+          <button class="add-button">
+            <a href="/catalog/create_pet">Add Lost Pet</a>
+          </button>
         </div>
         <menu>
-        <div class="main-content">
-          <div class="content">
-            <% dog_list.forEach(dog => { %>
-             <div class="card">
-              <div class="card-content">
-                <li><b>Name:</b> <%= dog.name %></li>
-                <li><b>Breed:</b> <%= dog.breed %></li>
-                <li><b>Age:</b> <%= dog.age %></li>
-                <li><b>Gender:</b> <%= dog.gender %></li>
-                <li><b>Size:</b> <%= dog.size %></li>
+          <div class="main-content">
+            <div class="content">
+              <% pet_list.forEach(pet => { %>
+              <div class="card">
+                <div class="image-container">
+                  <img class="image-card" src="data:pet/<%= pet.petImage.contentType%>;base64,<%= pet.petImage.data.toString('base64')%>">
+                </div>
+                <div class="card-details">
+                  <div class="card-pet-name"><%= pet.name %></div>
+                  <div class="card-controls">
+                    <form action="/catalog/delete_pet" method="post">
+                      <input type="hidden", name="petid", value="<%=pet._id%>"/>
+                      <button class="edit-delete-button" type="submit">
+                        <i class="fa-regular fa-trash-can"></i>
+                      </button>
+                    </form>
+                    <form action="/catalog/edit_pet" method="post">
+                      <input type="hidden", name="petid", value="<%=pet._id%>"/>
+                      <button
+                        class="edit-delete-button"
+                        value="submit"
+                        type="submit"
+                      >
+                      <i class="fa-solid fa-pen"></i>
+                      </button>
+                    </form>
+                  </div>
+                </div>
               </div>
-              <div class="card-controls">
-                <form action="/catalog/delete_dog" method="post">
-                  <input type="hidden", name="dogid", value="<%=dog._id%>">
-                  <button class="edit-delete-button" type="submit">Delete</button>
-                </form>
-                <form action="/catalog/edit_dog" method="post">
-                  <input type="hidden", name="dogid", value="<%=dog._id%>">
-                  <button class="edit-delete-button" value="submit" type="submit">Edit</button>
-                </form>
-              </div>
+              <% }) %>
             </div>
-            <% }) %>
           </div>
-        </div>
-      </menu>
-    </div>
+        </menu>
+      </div>
     </div>
   </body>
-  <footer>
-    <%- include('footer'); -%>
-  </footer>
+  <footer><%- include('footer'); -%></footer>
 </html>

@@ -8,32 +8,31 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <%- include('header'); %>
+    <%- include('nav'); %><%- include('header'); %>
     <div class="main-container">
-      <div class="nav-container"><%- include('nav'); %></div>
       <div class="content-container">
         <p class="app-info">PetFinder is a full stack application built using <b>M</b>ongoDB, <b>E</b>xpress.js, <b>E</b>JS, <b>N</b>ode.js.</p>
         <hr>
         <div class="form-container">
             <h3>Edit Form </h3>
-            <form class="edit-form" action="/catalog/edit_dog_save" method="post">
+            <form class="edit-form" action="/catalog/edit_pet_save" method="post">
                 <div class="form-fields">
                     <div class="form-field">
                         <label for="name">Name: </label>
-                        <input required type="text", id="pet_name", name="name" value="<%- dog.name %>">
+                        <input required type="text", id="pet_name", name="name" value="<%- pet.name %>">
                     </div>
                     <div class="form-field">
                         <label min="0" max="20" for="age">Age: </label>
-                        <input type="text", id="pet_age", name="age" value="<%- dog.age %>">
+                        <input type="text", id="pet_age", name="age" value="<%- pet.age %>">
                     </div>
                     <div class="form-field">
                         <label for="breed">Breed: </label>
-                        <input type="text", id="pet_breed", name="breed" value="<%- dog.breed %>">
+                        <input type="text", id="pet_breed", name="breed" value="<%- pet.breed %>">
                     </div>
                     <div class="form-field">
                         <label for="gender">Gender: </label>
                         <select name="gender" id="gender" name="gender">
-                            <% if (dog.gender == "Male") { %>
+                            <% if (pet.gender == "Male") { %>
                                 <option value="Male" selected>Male</option>
                             <% } else { %> 
                                 <option value="Female" selected>Female</option>
@@ -43,9 +42,9 @@
                     <div class="form-field">
                         <label for="size">Size: </label>
                         <select name="size" id="size" name="size">
-                            <% if (dog.size == "Small") { %>
+                            <% if (pet.size == "Small") { %>
                                 <option value="Small" selected>Small</option>
-                            <% } else if(dog.size == "Medium") { %> 
+                            <% } else if(pet.size == "Medium") { %> 
                                 <option value="Medium" selected>Medium</option>
                             <%} else { %>
                                 <option value="Large" selected>Large</option>

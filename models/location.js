@@ -4,8 +4,6 @@ const Schema = mongoose.Schema;
 
 const LocationSchema = new Schema({
     state: {type: String, required: true},
-    country: {type: String},
-    postal_code: {type: Number}
 });
 
 
@@ -13,4 +11,4 @@ const LocationSchema = new Schema({
 let Location = mongoose.model('Location', LocationSchema, )
 
 
-module.exports = mongoose.model("Location", LocationSchema)
+module.exports = Location;

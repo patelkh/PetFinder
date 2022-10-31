@@ -1,26 +1,28 @@
 
-const Dog = require('../models/dog');
+const Pet = require('../models/pet');
 const Location = require('../models/location');
 const Shelter = require('../models/shelter');
+const Type = require('../models/petType');
 const expressValidator = require("express-validator");
 const body = expressValidator.body;
 const validationResult = expressValidator.validationResult;
+const fs = require('fs')
 
 const async = require('async');
 const e = require('express');
 const stringHex = require('string-hex');
 const { default: mongoose } = require('mongoose');
 const moment = require('moment');
-const dog = require('../models/dog');
 
+//"name age breed gender size entry_date location shelter"
 //returns dog records to be displayed on the home page
 exports.index = function(req, res, next) {
-    Dog.find({}, "name age breed gender size entry_date location shelter")
+    Pet.find({})
     .sort({name:1})
     .sort({age:1})
-    .exec(function (err, list_dogs){ //list_dogs aka results
+    .exec(function (err, list_pets){ //list_dogs aka results
         if(err) return next(err)
-        res.render("layout", {title: "PetFinder", dog_list: list_dogs})
+        res.render("layout", {title: "PetFinder", pet_list: list_pets})
     })
 }
 
@@ -30,7 +32,7 @@ exports.about = (req, res) => {
 }
 
 //passes locations and shelters to the add form 
-exports.create_dog = (req, res, next) => {
+exports.create_pet = (req, res, next) => {
     async.parallel(
         {
             locations(callback) {
@@ -39,6 +41,10 @@ exports.create_dog = (req, res, next) => {
             shelters(callback) {
                 Shelter.find(callback)
             },
+            types(callback) {
+                Type.find(callback)
+            }
+
         },
         (err, results) => {
             if(err) {
@@ -47,6 +53,7 @@ exports.create_dog = (req, res, next) => {
             }
             res.render("addForm", {
                 title: "Add Pet",
+                types: results.types,
                 locations: results.locations,
                 shelters: results.shelters,
             })
@@ -55,25 +62,26 @@ exports.create_dog = (req, res, next) => {
 }
 
 //deletes record from database
-exports.delete_dog_post = (req, res, next) => {
+exports.delete_pet_post = (req, res, next) => {
     console.log(req.body)
-    Dog.findByIdAndRemove(req.body.dogid, (err) => {
+    Pet.findByIdAndRemove(req.body.petid, (err) => {
         if(err) {
             return next(err)
         }
-        console.log('dog deleted')
+        console.log('pet deleted')
         res.redirect("/")
     })
 }
 
 //records data to be edited
-exports.update_dog = (req, res, next) => {
-    const id = mongoose.Types.ObjectId(req.body.dogid)
+exports.update_pet = (req, res, next) => {
+    console.log(req.body.petid)
+    const id = mongoose.Types.ObjectId(req.body.petid)
     console.log(id)
     async.parallel(
         {
-            dog(callback) {
-                Dog.findById(id)
+            pet(callback) {
+                Pet.findById(id)
                 .exec(callback)
             },
         },
@@ -82,11 +90,11 @@ exports.update_dog = (req, res, next) => {
                 console.log(err)
                 return next(err)
             }
-            console.log(`entry_date: ${moment(results.dog.entry_date).format('YYYY-MM-DD')}`);
+            console.log(`entry_date: ${moment(results.pet.entry_date).format('YYYY-MM-DD')}`);
             res.render("editForm", {
                 title: "Edit Pet",
-                dog: results.dog,
-                entry_date: moment(results.dog.entry_date).format("YYYY-MM-DD"),
+                pet: results.pet,
+                entry_date: moment(results.pet.entry_date).format("YYYY-MM-DD"),
                 _id: id
             })
         }
@@ -94,9 +102,9 @@ exports.update_dog = (req, res, next) => {
 }
 
 //saves edited data 
-exports.update_dog_save = (req, res, next) => {
+exports.update_pet_save = (req, res, next) => {
     console.log(req.body)
-    Dog.findByIdAndUpdate(req.body.id, 
+    Pet.findByIdAndUpdate(req.body.id, 
         {
             name: req.body.name,
             age: req.body.age,
@@ -117,14 +125,22 @@ exports.update_dog_save = (req, res, next) => {
 }
 
 //Adds a new record into the database from the Add page
-exports.update_dog_post = (req, res, next) => {
-    const dog = new Dog({
+exports.update_pet_post = (req, res, next) => {
+    console.log(req.file.path)
+    const dog = new Pet({
+        petImage: {
+            data: fs.readFileSync(req.file.path),
+            contentType: "image/png",
+        },
         name: req.body.name,
         age: req.body.age,
+        type: req.body.type,
         breed: req.body.breed,
         gender: req.body.gender,
         size: req.body.size,
         entry_date: req.body.entry_date,
+        location: req.body.location,
+        shelter: req.body.shelter
     })
     dog.save((err)=> {
         if(err) {
