@@ -153,3 +153,11 @@ exports.update_pet_post = (req, res, next) => {
     })
 }
 
+
+exports.search_pet = (req, res, next) => {
+    Pet.find({name: req.body.name})
+    .exec(function (err, list_pets){ //list_dogs aka results
+        if(err) return next(err)
+        res.render("layout", {title: "PetFinder", pet_list: list_pets})
+    })
+}

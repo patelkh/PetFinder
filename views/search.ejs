@@ -1,6 +1,10 @@
 <div class="search">
-    <div class="search-container">
-        <input name="search" placeholder="Enter name"/>
-    </div>
-   
+  <div class="search-container">
+    <form action="/catalog/search" method="post">
+      <input required name="name" placeholder="Enter name" />
+      <button class="search-button" type="submit">
+        <i type="submit" class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
 </div>

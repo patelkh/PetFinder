@@ -213,7 +213,8 @@ label, input, select {
 
 input, select {
   width: 200px;
-  height:25px
+  height:25px;
+  border-radius: 5px;
 }
 
 .form-control {
@@ -230,4 +231,24 @@ input, select {
   display: flex;
   align-items: center;
   justify-content: right;
+}
+
+.search-container > form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.fa-solid.fa-magnifying-glass {
+  margin-left: 3px;
+  font-size: 18px;
+  color: dodgerblue;
+  border: none;
+
+}
+.search-button {
+  height:30px;
+  text-align: center;
+  border: none;
 }
