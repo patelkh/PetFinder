@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer')
-const load = multer(({dest: ".././public/images"}))
+const load = multer(({dest: "./uploads"}))
 const pet_controller = require('../controllers/petController');
 
 
